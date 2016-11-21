@@ -5,23 +5,27 @@
     <a class="btn btn-primary btn-lg">GET IT</a>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-md-3">
-          <div class="product">
+
+    <% @products.in_groups_of(4, false).each do |group| %>
+    <div class="container">
+      <div class="row">
+        <% group.each do |product| %>
+          <div class="col-md-3">
+            <div class="product">
               <p> <%= product.name %> </p>
               <p> <%= product.description %> </p>
               <p> <%= product.price %> </p>
               <p> <%= product.category %> </p>
               <%= link_to product_path(product) do %>
-                <button type="button" class="btn btn-primary">Show</button>
-                <% end %>
+                <button type="button" class="btn btn-primary show_button ">Show</button>
+              <% end %>
+            </div>
           </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
+  <% end %>
+
 
 <div class="container">
 <%= link_to new_product_path do  %>
