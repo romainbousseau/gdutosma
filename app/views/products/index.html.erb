@@ -1,0 +1,32 @@
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_url('production-studio.png')%>);">
+  <div class="banner-content">
+    <h1>Gdutosma</h1>
+    <p>Rent professionnal equipments from people near you</p>
+    <a class="btn btn-primary btn-lg">GET IT</a>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-3">
+          <div class="product">
+              <p> <%= product.name %> </p>
+              <p> <%= product.description %> </p>
+              <p> <%= product.price %> </p>
+              <p> <%= product.category %> </p>
+              <%= link_to product_path(product) do %>
+                <button type="button" class="btn btn-primary">Show</button>
+                <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+<%= link_to new_product_path do  %>
+<button type="button" class="btn btn-primary">Add a new product </button>
+
+<% end %>
+
+</div>

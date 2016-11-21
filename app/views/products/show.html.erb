@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="product">
+    <h2> <%= @product.name %> </h2>
+    <p> <%= @product.description %> </p>
+    <p> <%= @product.price %> </p>
+    <p> <%= @product.category %> </p>
+  </div>
+</div>
+
+<div class="container">
+<%= link_to products_path do  %>
+<button type="button" class="btn btn-primary">Home </button>
+
+<% end %>
+
+</div>
