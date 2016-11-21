@@ -9,5 +9,5 @@
 
 Product.delete_all
 10.times do
-  Product.create!(name: Faker::Commerce.product_name, description: Faker::Lorem.paragraph, price: Faker::Commerce.price, category: Product::CATEGORY )
+  Product.create!(name: Faker::Commerce.product_name, description: Faker::Lorem.paragraph, price: Faker::Commerce.price, category: Product::CATEGORY.sample )
 end
