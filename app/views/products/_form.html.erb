@@ -1,0 +1,8 @@
+<%= simple_form_for(@product) do |f| %>
+<%= f.error_notification %>
+  <%= f.input :name, placeholder: "Canon 5D" %>
+  <%= f.input :description, placeholder: "" %>
+  <%= f.input :category, collection: Product::CATEGORY, placeholder: "Camera" %>
+  <%= f.input :price, placeholder: "" %>
+  <%= f.button :submit, class: "btn btn-primary"  %>
+<% end %>
