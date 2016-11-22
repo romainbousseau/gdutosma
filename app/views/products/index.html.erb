@@ -6,31 +6,27 @@
   </div>
 </div>
 
-    <% @products.in_groups_of(4, false).each do |group| %>
-    <div class="container">
-      <div class="row">
-        <% group.each do |product| %>
-          <div class="col-md-3">
-            <div class="product">
-              <p> <%= product.name %> </p>
-              <p> <%= product.description %> </p>
-              <p> <%= product.price %> </p>
-              <p> <%= product.category %> </p>
-              <%= link_to product_path(product) do %>
-                <button type="button" class="btn btn-primary show_button ">Show</button>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-
-
 <div class="container">
-<%= link_to new_product_path do  %>
-<button type="button" class="btn btn-primary">Add a new product </button>
-
-<% end %>
-
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
+          <div class="card-category"><%= product.category %></div>
+          <div class="card-description">
+            <h2> <%= product.name %> </h2>
+            <p> <%= truncate(product.description, length: 25, separator: ' ' ) %> </p>
+            <p> <%= product.price %>$/day</p>
+            <%= link_to product_path(product) do %>
+              <button type="button" class="btn btn-primary show_button ">Show</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
 </div>
+
+
+
+
+

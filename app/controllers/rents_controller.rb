@@ -21,6 +21,12 @@ class RentsController < ApplicationController
     end
   end
 
+  def validate
+    @rent = Rent.find(params[:id])
+    @rent.update(status: "Validate")
+    redirect_to(:back)
+  end
+
   private
 
   def find_product
