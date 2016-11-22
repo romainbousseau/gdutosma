@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
   resources :products do
+    get 'undisplay', to: "products#undisplay"
     resources :rents
   end
   resources :users, only: [ :edit, :update, :show ]

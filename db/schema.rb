@@ -36,8 +36,11 @@ ActiveRecord::Schema.define(version: 20161122151130) do
     t.integer  "price"
     t.string   "category"
     t.boolean  "available"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "hidden",      default: false
+<<<<<<< HEAD
+=======
     t.integer  "user_id"
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
@@ -52,6 +55,7 @@ ActiveRecord::Schema.define(version: 20161122151130) do
     t.datetime "updated_at",                     null: false
     t.index ["product_id"], name: "index_rents_on_product_id", using: :btree
     t.index ["user_id"], name: "index_rents_on_user_id", using: :btree
+>>>>>>> master
   end
 
   create_table "users", force: :cascade do |t|

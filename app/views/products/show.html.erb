@@ -10,7 +10,11 @@
 <div class="container">
 <%= link_to products_path do  %>
 <button type="button" class="btn btn-primary">Home </button>
-
 <% end %>
+
+<%= link_to "Delete", product_undisplay_path(@product),
+:controller => :products, :action => :undisplay,
+ data: { confirm: "Are you sure?" }
+ %>
 
 </div>
