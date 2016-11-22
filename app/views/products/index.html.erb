@@ -14,8 +14,8 @@
           <div class="card-category"><%= product.category %></div>
           <div class="card-description">
             <h2> <%= product.name %> </h2>
-            <p> <%= product.description %> </p>
-            <p> <%= product.price %> </p>
+            <p> <%= truncate(product.description, length: 25, separator: ' ' ) %> </p>
+            <p> <%= product.price %>$/day</p>
             <%= link_to product_path(product) do %>
               <button type="button" class="btn btn-primary show_button ">Show</button>
             <% end %>
