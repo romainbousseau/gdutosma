@@ -7,6 +7,7 @@ gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
+gem 'cloudinary', '1.1.0'
 
 gem 'sass-rails'
 gem 'jquery-rails'
