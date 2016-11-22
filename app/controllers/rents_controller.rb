@@ -23,13 +23,19 @@ class RentsController < ApplicationController
 
   def validate
     @rent = Rent.find(params[:id])
-    @rent.update(status: "Validate")
+    @rent.update(status: "validate")
     redirect_to(:back)
   end
 
   def decline
     @rent = Rent.find(params[:id])
-    @rent.update(status: "Decline")
+    @rent.update(status: "decline")
+    redirect_to(:back)
+  end
+
+  def done
+    @rent = Rent.find(params[:id])
+    @rent.update(status: "Done")
     redirect_to(:back)
   end
 
