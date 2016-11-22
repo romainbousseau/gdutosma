@@ -28,7 +28,12 @@
 
 <div class="container">
   <div class="row">
-
+    <div class="col-xs-4 col-xs-offset-4">
+      <br>
+      <%= link_to "Validate", validate_path(@rent), class: "btn btn-success btn-lg" %>
+      <%= link_to "Decline", decline_path(@rent), class: "btn btn-danger btn-lg" %>
+      <br>
+      <h3>Status: <%= @rent.status %></h3>
+    </div>
   </div>
 </div>
-

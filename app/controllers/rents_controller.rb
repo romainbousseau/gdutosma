@@ -1,5 +1,5 @@
 class RentsController < ApplicationController
-  before_action :find_product, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :find_product, only: [:show, :new, :create]
   def show
     @owner = User.find(@product.user)
     @rent = Rent.find(params[:id])
@@ -24,6 +24,12 @@ class RentsController < ApplicationController
   def validate
     @rent = Rent.find(params[:id])
     @rent.update(status: "Validate")
+    redirect_to(:back)
+  end
+
+  def decline
+    @rent = Rent.find(params[:id])
+    @rent.update(status: "Decline")
     redirect_to(:back)
   end
 
