@@ -4,10 +4,12 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
   resources :products do
+
+    resources :rents, only: [:show, :new, :create]
+
     get 'undisplay', to: "products#undisplay"
-    resources :rents
   end
-  resources :users, only: [ :edit, :update, :show ]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  patch 'products/:product_id/rents/:id', to: 'rents#validate', as: :validate
+  get 'rents/:id/validate', to: 'rents#validate', as: :validate
+  get 'rents/:id/decline', to: 'rents#decline', as: :decline
 end
