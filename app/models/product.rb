@@ -5,5 +5,6 @@ class Product < ApplicationRecord
   validates :price, presence: true
   belongs_to :user
   has_many :rents
+  has_attachments :photos, maximum: 3
   CATEGORY = ["Video/Photo", "Sound", "Lights", "Accesories"]
 end
