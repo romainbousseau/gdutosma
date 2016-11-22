@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  before_action :set_product, only: [ :show ]
+  before_action :set_product, only: [ :show, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.all.where(hidden: false)
   end
 
   def show
@@ -22,6 +22,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def undisplay
+    @product = Product.find(params[:product_id])
+    @product.hidden = true
+    @product.save
+    redirect_to products_path
+  end
+
+
   private
 
   def set_product
@@ -31,4 +39,7 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :category, :price)
   end
+
 end
+
+
