@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <h1>Rent of <%= @product.name %></h1>
+      <h3>Date</h3>
+      <p>from <%= @rent.start_date %></p>
+      <p>to <%= @rent.end_date %></p>
+      <h3>Description</h3>
+      <p><%= @product.description %></p>
+      <h3>Facturation</h3>
+      <% nb_days = @rent.end_date.mjd - @rent.start_date.mjd + 1 %>
+      <p><%= @product.price %>$ for <%= nb_days %> days</p>
+      <p><strong>Total</strong> <%= @product.price * nb_days %>$</p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <h1>People</h1>
+      <h3>Owner</h3>
+      <p><%= @owner.first_name %> <%= @owner.last_name %></p>
+      <p><%= @owner.address %></p>
+      <p><%= mail_to @owner.email, "Send Mail" %></p>
+      <h3>Customer</h3>
+      <p><%= @customer.first_name %> <%= @customer.last_name %></p>
+      <p><%= @customer.address %></p>
+      <p><%= mail_to @customer.email, "Send Mail" %></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+  </div>
+</div>
+
