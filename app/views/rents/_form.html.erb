@@ -1,0 +1,6 @@
+<%= simple_form_for([@product, @rent]) do |f| %>
+<%= f.error_notification %>
+  <%= f.input :start_date, placeholder: "" %>
+  <%= f.input :end_date, placeholder: "" %>
+  <%= f.button :submit, class: "btn btn-primary"  %>
+<% end %>
