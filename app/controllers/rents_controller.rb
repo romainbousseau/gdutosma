@@ -1,5 +1,11 @@
 class RentsController < ApplicationController
   before_action :find_product, only: [:show, :new, :create, :edit, :update, :destroy]
+  def show
+    @owner = User.find(@product.user)
+    @rent = Rent.find(params[:id])
+    @customer = User.find(@rent.user)
+
+  end
 
   def new
     @rent = current_user.rents.build
