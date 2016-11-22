@@ -4,5 +4,6 @@
   <%= f.input :description, placeholder: "" %>
   <%= f.input :category, collection: Product::CATEGORY, placeholder: "Camera" %>
   <%= f.input :price, placeholder: "" %>
+  <%= f.input :photos, as: :attachinary %>
   <%= f.button :submit, class: "btn btn-primary"  %>
 <% end %>
