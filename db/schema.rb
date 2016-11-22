@@ -36,8 +36,9 @@ ActiveRecord::Schema.define(version: 20161122151130) do
     t.integer  "price"
     t.string   "category"
     t.boolean  "available"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "hidden",      default: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
