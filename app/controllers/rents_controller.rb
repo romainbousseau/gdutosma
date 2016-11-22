@@ -24,6 +24,7 @@ class RentsController < ApplicationController
   def validate
     @rent = Rent.find(params[:id])
     @rent.update(status: "validate")
+    @status.update(available: false, hidden: true)
     redirect_to(:back)
   end
 
@@ -35,7 +36,8 @@ class RentsController < ApplicationController
 
   def done
     @rent = Rent.find(params[:id])
-    @rent.update(status: "Done")
+    @rent.update(status: "done")
+    @status.update(available: true, hidden: false)
     redirect_to(:back)
   end
 

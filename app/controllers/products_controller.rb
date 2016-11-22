@@ -29,6 +29,16 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def unavailable
+    @product = Product.find(params[:product_id])
+    if @product.available == true
+      @product.available = false
+      @product.hidden = true
+    elsif @product.available == false
+      @product.available = true
+      @product.hidden = false
+    end
+  end
 
   private
 
@@ -41,5 +51,3 @@ class ProductsController < ApplicationController
   end
 
 end
-
-
