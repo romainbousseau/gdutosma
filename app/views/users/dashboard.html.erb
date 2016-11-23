@@ -16,7 +16,16 @@
     <div class="tab-content" id="products">
       <% @products.each do |p| %>
         <div class="col-xs-12 col-sm-4">
-          <p><%= link_to p.name, product_path(p) %></p>
+          <div class="card">
+            <p><%= link_to p.name, product_path(p) %></p>
+            <div class="availability">
+                <p> Change product availability </p>
+                <%= link_to p.available ? "Set unavailable" : "Set available", product_unavailable_path(p), :class => "btn btn-warning btn-lg",
+                :controller => :products, :action => :unavailable,
+                 data: { confirm: "Are you sure?" }, method: :post
+                 %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
@@ -28,10 +37,20 @@
     <div class="tab-content hidden" id="products_rents">
       <% @rents_owner.each do |r| %>
         <div class="col-xs-12 col-sm-4">
-          <% r = r[0] %>
-          <p><%= r.user.first_name %> <%= r.user.last_name %></p>
-          <p><%= r.start_date %></p>
-          <p><%= r.end_date %></p>
+          <div class="card">
+            <% r = r[0] %>
+            <p><%= r.user.first_name %> <%= r.user.last_name %></p>
+            <p><%= r.start_date %></p>
+            <p><%= r.end_date %></p>
+            <% if r.status == "pending" %>
+              <%= link_to "Validate", validate_rent_path(r), class: "btn btn-success btn-lg", method: :post %>
+              <%= link_to "Decline", decline_rent_path(r), class: "btn btn-danger btn-lg", method: :post %>
+            <% else %>
+              <%= link_to "Done", done_rent_path(r), class: "btn btn-warning btn-lg", method: :post %>
+            <% end %>
+            <br>
+            <p>Status: <%= r.status.capitalize %></p>
+          </div>
         </div>
       <% end %>
     </div>
@@ -43,9 +62,12 @@
     <div class="tab-content hidden" id="rents">
       <% @rents_client.each do |r| %>
         <div class="col-xs-12 col-sm-4">
-          <p><%= r.user.first_name %> <%= r.user.last_name %></p>
-          <p><%= r.start_date %></p>
-          <p><%= r.end_date %></p>
+          <div class="card">
+            <% r = r[0] %>
+            <p><%= r.user.first_name %> <%= r.user.last_name %></p>
+            <p><%= r.start_date %></p>
+            <p><%= r.end_date %></p>
+          </div>
         </div>
       <% end %>
     </div>
