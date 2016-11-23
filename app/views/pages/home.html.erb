@@ -2,7 +2,16 @@
   <div class="banner-content">
     <h1>Gdutosma</h1>
     <p>Rent professionnal equipments from people near you</p>
-    <a class="btn btn-primary btn-lg">GET IT</a>
+      <%= simple_form_for :product do |f| %>
+
+        <%= f.input_field :search, :placeholder => "Search products",
+        :class => "input-lg", :id => "inputcolor" %>
+
+        <%= f.input_field :search, :placeholder => "place",
+        :class => "input-lg", :id => "inputcolor" %>
+
+        <%= f.submit "Find !", :class => "btn btn-primary btn-lg" %>
+      <% end %>
   </div>
 </div>
 
@@ -26,3 +35,4 @@
 
   </div>
 </div>
+
