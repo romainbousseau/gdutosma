@@ -35,25 +35,27 @@
 <div class="container">
   <div class="row">
     <div class="tab-content hidden" id="products_rents">
-    <% if @rents_owner.flatten.length > 0 %>
-      <% @rents_owner[0].each do |r| %>
+    <% if @rents_owner.length > 0 %>
+      <% @rents_owner.each do |rent| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card">
-          <p><%= r.product.name %></p>
-            <p><%= r.user.first_name %> <%= r.user.last_name %></p>
-            <p><%= r.start_date %></p>
-            <p><%= r.end_date %></p>
-            <% if r.status == "pending" %>
-              <%= link_to "Validate", validate_rent_path(r), class: "btn btn-success btn-lg", method: :post %>
-              <%= link_to "Decline", decline_rent_path(r), class: "btn btn-danger btn-lg", method: :post %>
+          <p><%= rent.product.name %></p>
+            <p><%= rent.user.first_name %> <%= rent.user.last_name %></p>
+            <p><%= rent.start_date %></p>
+            <p><%= rent.end_date %></p>
+            <% if rent.status == "pending" %>
+              <%= link_to "Validate", validate_rent_path(rent), class: "btn btn-success btn-lg", method: :post %>
+              <%= link_to "Decline", decline_rent_path(rent), class: "btn btn-danger btn-lg", method: :post %>
             <% else %>
-              <%= link_to "Done", done_rent_path(r), class: "btn btn-warning btn-lg", method: :post %>
+              <%= link_to "Done", done_rent_path(rent), class: "btn btn-warning btn-lg", method: :post %>
             <% end %>
             <br>
-            <p>Status: <%= r.status.capitalize %></p>
+            <p>Status: <%= rent.status.capitalize %></p>
           </div>
         </div>
       <% end %>
+      <% else %>
+        <p> You don't have any rents in your history</p>
       <% end %>
     </div>
   </div>
@@ -74,4 +76,3 @@
     </div>
   </div>
 </div>
-
