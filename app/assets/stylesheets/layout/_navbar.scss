@@ -4,7 +4,7 @@
   background: white;
   transition: all 0.3s ease;
   display: flex;
-  height: 120px;
+  height: 90px;
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
@@ -144,4 +144,7 @@
   border-top: 1px solid #E6E6E6;
 }
 
+.badge-red{
+background: #ff7b7f;
 
+}

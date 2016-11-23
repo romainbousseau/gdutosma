@@ -10,28 +10,50 @@
         <%= f.input_field :search, :placeholder => "place",
         :class => "input-lg", :id => "inputcolor" %>
 
-        <%= f.submit "Find !", :class => "btn btn-primary btn-lg" %>
+        <%= f.submit "Find !", :class => "btn btn-mine btn-lg" %>
       <% end %>
   </div>
 </div>
 
-<div class="container border">
+<div class="container border text-center">
   <div class="row">
 
     <div class="col-md-6 padded ">
       <h1 class="myh1"> You want a specific item to rent ? </h1>
       <br>
       <%= link_to products_path do  %>
-      <button type="button" class="btn btn-primary center-block btn-lg" >rent an item </button>
+      <button type="button" class="btn btn-mine center-block btn-lg" >rent an item </button>
       <% end %>
     </div>
     <div class="col-md-6 padded">
       <h1 class="myh1">You own an item & want to rent it </h1>
       <br>
       <%= link_to new_product_path do  %>
-      <button type="button" class="btn btn-primary center-block btn-lg" >Create announce </button>
+      <button type="button" class="btn btn-mine center-block btn-lg" >Create announce </button>
       <% end %>
     </div>
+
+        <div class="col-md-3">
+        <div class="icones" id="icone1" style="background-image: url(<%= asset_url('photo.png')%>);"></div>
+        <h3 class="h3style">Rentabilisez votre matériel et économisez en louant</h3>
+      </div>
+
+      <div class="col-md-3">
+        <div class="icones" id="icone2" style="background-image: url(<%= asset_url('love.png')%>);"></div>
+        <h3 class="h3style">Location entre passionés et professionels</h3>
+      </div>
+
+      <div class="col-md-3">
+        <div class="icones" id="icone3" style="background-image: url(<%= asset_url('cadenas.png')%>);"></div>
+        <h3 class="h3style"> Assurance casse & vol illimitée</h3>
+      </div>
+
+      <div class="col-md-3">
+        <div class="icones" id="icone4" style="background-image: url(<%= asset_url('phone.png')%>);"></div>
+        <h3 class="h3style">Recevez les demandes de nos membres certifiés</h3>
+      </div>
+
+
 
   </div>
 </div>

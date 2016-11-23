@@ -5,11 +5,11 @@
 
 /* border du container */
 
-.border{
-padding: 150px 50px;
-box-shadow: 1px 1px 12px #555;
-margin-top: 50px;
-}
+// .border{
+// padding: 150px 50px;
+// box-shadow: 1px 1px 12px #555;
+// margin-top: 50px;
+// }
 
 /* style titre h1*/
 
@@ -25,6 +25,7 @@ letter-spacing: 2px;
  vertical-align: top;
  transition: all 0.5s;
  border-radius: 5px;
+ text-decoration: none;
 }
 
 #inputcolor{
@@ -41,16 +42,15 @@ letter-spacing: 2px;
 text-align: center;
 font-size: 18px;
 font-family: 'montserrat';
-font-weight: 300px;
-margin: 5em auto;
-padding: 20px 10px;
-width: 200px;
-height: 25px;
-background-color: #FF4776;
-border: 1px solid #DD2AA2;
+margin: 0 auto;
+width: 245.31px;
+height: 48.99px;
+background-color: #ff7b7f;
+border: 1px solid #ff7b7f;
 color: #FFF;
 overflow: hidden;
 transition: all 0.5s;
+vertical-align: top;
 }
 
 
@@ -61,4 +61,46 @@ color: #FF4776;
 border-color: #FF4776;
 background: #FFF;
 
+}
+
+
+
+a:-webkit-any-link{
+  text-decoration: none;
+}
+
+
+#icone1:hover {
+  background-image: image-url("photo_hover.png") !important;
+}
+
+
+#icone2:hover {
+  background-image: image-url("love_hover.png") !important;
+}
+
+#icone3:hover {
+  background-image: image-url("cadenas_hover.png") !important;
+}
+
+#icone4:hover {
+  background-image: image-url("phone_hover.png") !important;
+}
+
+
+.icones{
+
+background-size: 70px 70px;
+background-repeat: no-repeat;
+margin : auto;
+height: 70px;
+width: 90px;
+max-width: 100%;
+
+}
+
+.h3style{
+
+color: #FF4776;
+font-size: 16px;
 }
