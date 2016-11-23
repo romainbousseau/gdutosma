@@ -8,6 +8,7 @@
 .border{
 padding: 150px 50px;
 box-shadow: 1px 1px 12px #555;
+margin-top: 50px;
 }
 
 /* style titre h1*/
@@ -17,3 +18,47 @@ font-size: 25px;
 letter-spacing: 2px;
 }
 
+
+/*override de la classe btn de bootstrap*/
+.btn{
+
+ vertical-align: top;
+ transition: all 0.5s;
+ border-radius: 5px;
+}
+
+#inputcolor{
+color: grey;
+}
+
+.input-lg{
+  border-radius: 5px;
+}
+
+.btn-mine{
+text-transform: uppercase;
+letter-spacing: 2px;
+text-align: center;
+font-size: 18px;
+font-family: 'montserrat';
+font-weight: 300px;
+margin: 5em auto;
+padding: 20px 10px;
+width: 200px;
+height: 25px;
+background-color: #FF4776;
+border: 1px solid #DD2AA2;
+color: #FFF;
+overflow: hidden;
+transition: all 0.5s;
+}
+
+
+.btn-mine:hover, .btn-mine:active{
+
+text-decoration: none;
+color: #FF4776;
+border-color: #FF4776;
+background: #FFF;
+
+}
