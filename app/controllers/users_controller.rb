@@ -15,6 +15,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def dashboard
+    @user = current_user
+    @products = @user.products
+    @rents_owner = @products.map { |p| p.rents }
+    @rents_client = @user.rents
+  end
+
   private
 
   def set_user
