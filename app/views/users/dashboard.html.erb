@@ -39,6 +39,7 @@
       <% @rents_owner[0].each do |r| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card">
+          <p><%= r.product.name %></p>
             <p><%= r.user.first_name %> <%= r.user.last_name %></p>
             <p><%= r.start_date %></p>
             <p><%= r.end_date %></p>

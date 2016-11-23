@@ -33,6 +33,7 @@
              <h2> <%= product.name %> </h2>
              <p> <%= truncate(product.description, length: 25, separator: ' ' ) %> </p>
              <p> <%= product.price %>$/day</p>
+             <p> <%= product.user.first_name %> <%= product.user.last_name %></p>
              <%= link_to product_path(product) do %>
                <button type="button" class="btn btn-primary show_button ">Show</button>
              <% end %>
