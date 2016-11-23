@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     @products = @user.products
-    @rents_owner = @products.map { |p| p.rents }
+    @rents_owner = Product.where(user_id: current_user.id).joins(:rents)
     @rents_client = @user.rents
   end
 

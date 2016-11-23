@@ -35,10 +35,10 @@
 <div class="container">
   <div class="row">
     <div class="tab-content hidden" id="products_rents">
+    <% if @rents_owner.any? %>
       <% @rents_owner.each do |r| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card">
-            <% r = r[0] %>
             <p><%= r.user.first_name %> <%= r.user.last_name %></p>
             <p><%= r.start_date %></p>
             <p><%= r.end_date %></p>
@@ -52,6 +52,7 @@
             <p>Status: <%= r.status.capitalize %></p>
           </div>
         </div>
+      <% end %>
       <% end %>
     </div>
   </div>

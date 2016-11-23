@@ -15,3 +15,30 @@
   <% end %>
   </div>
 </div>
+
+<div class="container">
+   <div class="row">
+    <% @products.each do |product| %>
+       <div class="col-xs-12 col-sm-4">
+         <div class="card">
+           <div class="card-category"><%= product.category %></div>
+           <div class="card-img">
+             <% if product.photos? %>
+             <%= cl_image_tag product.photos.path, width: 80, crop: :fill %>
+             <% else %>
+             <%= image_tag "http://placehold.it/50x50" %>
+             <% end %>
+            </div>
+           <div class="card-description">
+             <h2> <%= product.name %> </h2>
+             <p> <%= truncate(product.description, length: 25, separator: ' ' ) %> </p>
+             <p> <%= product.price %>$/day</p>
+             <%= link_to product_path(product) do %>
+               <button type="button" class="btn btn-primary show_button ">Show</button>
+             <% end %>
+           </div>
+         </div>
+       </div>
+       <% end %>
+     </div>
+ </div>
