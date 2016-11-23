@@ -11,6 +11,9 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+      <!-- Text link -->
+      <%= link_to "Dashboard", user_dashboard_path(current_user) %>
+
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
