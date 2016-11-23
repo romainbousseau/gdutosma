@@ -9,9 +9,14 @@
         <% @product.photos.each do |photo| %>
           <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
         <% end %>
+
         <div class="container">
           <%= link_to products_path do  %>
             <button type="button" class="btn btn-primary btn-lg">Home </button>
+          <% end %>
+
+          <%= link_to new_product_rent_path(@product) do  %>
+            <button type="button" class="btn btn-primary btn-lg">Get it </button>
           <% end %>
 
           <% if @product.user == current_user %>
@@ -23,6 +28,7 @@
         </div>
       </div>
     </div>
+
     <div class="col-md-6">
       <div class="availability">
         <% if @product.user == current_user %>
