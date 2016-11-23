@@ -8,6 +8,7 @@
 .border{
 padding: 150px 50px;
 box-shadow: 1px 1px 12px #555;
+margin-top: 50px;
 }
 
 /* style titre h1*/
@@ -17,3 +18,19 @@ font-size: 25px;
 letter-spacing: 2px;
 }
 
+
+/*override de la classe btn de bootstrap*/
+.btn{
+
+ vertical-align: top;
+ transition: all 0.5s;
+ border-radius: 5px;
+}
+
+#inputcolor{
+color: grey;
+}
+
+.input-lg{
+  border-radius: 5px;
+}
