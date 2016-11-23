@@ -1,0 +1,54 @@
+<h1>Welcome to your Dashboard <%= @user.first_name %> <%= @user.last_name %></h1>
+<div class="tabs">
+  <a class="tab active" data-target="#products">
+    <p>My products</p>
+  </a>
+  <a class="tab" data-target="#rents">
+    <p>My rents</p>
+  </a>
+  <a class="tab" data-target="#products_rents">
+    <p>My products rents</p>
+  </a>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="tab-content" id="products">
+      <% @products.each do |p| %>
+        <div class="col-xs-12 col-sm-4">
+          <p><%= link_to p.name, product_path(p) %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="tab-content hidden" id="products_rents">
+      <% @rents_owner.each do |r| %>
+        <div class="col-xs-12 col-sm-4">
+          <% r = r[0] %>
+          <p><%= r.user.first_name %> <%= r.user.last_name %></p>
+          <p><%= r.start_date %></p>
+          <p><%= r.end_date %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="tab-content hidden" id="rents">
+      <% @rents_client.each do |r| %>
+        <div class="col-xs-12 col-sm-4">
+          <p><%= r.user.first_name %> <%= r.user.last_name %></p>
+          <p><%= r.start_date %></p>
+          <p><%= r.end_date %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
