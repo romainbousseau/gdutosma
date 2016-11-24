@@ -1,9 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <% @product.photos.each do |photo| %>
+      <% if @product.photos? %>
+        <% @product.photos.each do |photo| %>
+          <div class="photo col-xs-12 col-md-4">
+            <%= cl_image_tag photo.path, width: 200, crop: :fill %>
+          </div>
+        <% end %>
+      <% else %>
         <div class="photo col-xs-12 col-md-4">
-          <%= cl_image_tag photo.path, width: 200, crop: :fill %>
+          <%= image_tag "http://placehold.it/200x200" %>
         </div>
       <% end %>
     </div>
