@@ -54,14 +54,15 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
-  def unavailable
+  def change_availability
     @product = Product.find(params[:product_id])
     if @product.available == true
-      @product.available = false
+      @product.update(available: false, hidden: true)
+      redirect_to user_dashboard_path(current_user)
       @product.hidden = true
     elsif @product.available == false
-      @product.available = true
-      @product.hidden = false
+      @product.update(available: true, hidden: false)
+      redirect_to user_dashboard_path(current_user)
     end
   end
 
