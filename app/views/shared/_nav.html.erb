@@ -20,11 +20,12 @@
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-red">3</div>
+          <i class="fa fa-envelope-o" data-container="body" data-toggle="popover" data-placement="bottom" data-content="<%= text_for_notifications %>"></i>
+          <% if number_of_pending_rents > 0 %>
+            <div class="badge badge-red"><%= number_of_pending_rents%></div>
+          <% end %>
         </div>
       <% end %>
-
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
