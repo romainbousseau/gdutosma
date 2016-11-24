@@ -12,7 +12,7 @@
     <% if user_signed_in? %>
 
       <!-- Text link -->
-      <%= link_to "Dashboard", user_dashboard_path(current_user) %>
+      <%= link_to "Dashboard", user_dashboard_path(current_user), :class => "btn btn-info" %>
 
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
