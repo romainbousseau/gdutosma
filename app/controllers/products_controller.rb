@@ -3,10 +3,9 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [ :show, :destroy]
 
   def index
-    # verifie si tous les inputs sont founis et non vide
-    # si c vide -> flash + redirect_to
     product = params[:product]
-
+    # On verifie si tous les inputs sont fournis et non vide
+    # si c vide -> flash + redirect_to
     product.each_value do |value|
       if value.empty? || value.nil? || value.blank?
         flash[:alert] = "You did not fill all the fields bro"
@@ -14,13 +13,11 @@ class ProductsController < ApplicationController
         break
       end
     end
-
     @product_wanted = params[:product][:product_wanted]
     @location = params[:product][:location]
     @start_date = params[:product][:start_date]
     @end_date = params[:product][:end_end]
-    @products = @product_wanted.nil? ? Product.all.where(hidden: false) : Product.all.where(hidden: false, name: @product_wanted)
-
+    @products = Product.all.where("name ILIKE ? AND hidden = ?", "%#{@product_wanted}%", false)
   end
 
   def show
