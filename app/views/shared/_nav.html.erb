@@ -11,8 +11,11 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+    <!-- Text link -->
+      <%= link_to "Add Rent", new_product_path, :class => "btn btn-info", id: "btn-nav" %>
+
       <!-- Text link -->
-      <%= link_to "Dashboard", user_dashboard_path(current_user), :class => "btn btn-info" %>
+      <%= link_to "Dashboard", user_dashboard_path(current_user), :class => "btn btn-info", id: "btn-nav" %>
 
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
