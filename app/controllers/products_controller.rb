@@ -34,6 +34,8 @@ class ProductsController < ApplicationController
 
   def show
     @rent = Rent.new
+    @user = @product.user
+
   end
 
   def new
