@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :rents, only: [:show, :new, :create]
     post 'undisplay', to: "products#undisplay"
-    post 'unavailable', to: "products#unavailable"
+    post 'change_availability', to: "products#change_availability"
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :rents, only: [] do
