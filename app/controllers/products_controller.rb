@@ -41,7 +41,15 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = current_user.products.build
+    current_user.attributes.each_value do |field_value|
+      if field_value.nil?
+        flash[:alert] = "You need to complete your profile before creating an announce"
+        redirect_to root_path
+        break
+      else
+        @product = current_user.products.build
+      end
+    end
   end
 
   def create
