@@ -4,6 +4,12 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.where(hidden: false)
+    @users = User.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
   end
 
   def show
