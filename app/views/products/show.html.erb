@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <div class="product">
         <h2> <%= @product.name %> </h2>
         <p> <%= @product.description %> </p>
@@ -28,11 +28,16 @@
         </div>
       </div>
     </div>
+    <div class="col-md-4">
+      <%= render 'rents/new' %>
+    </div>
+  </div>
 
+  <div class="row">
     <div class="col-md-6">
       <div class="availability">
         <% if @product.user == current_user %>
-          <h3> Change product availability </h3>
+          <h4> Change product availability </h4>
           <% %>
           <%= link_to @product.available ? "Set unavailable" : "Set available", product_unavailable_path(@product), :class => "btn btn-warning btn-lg",
           :controller => :products, :action => :unavailable,
