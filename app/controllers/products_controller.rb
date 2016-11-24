@@ -25,7 +25,6 @@ class ProductsController < ApplicationController
 
     # geocoding
     @users = User.where.not(latitude: nil, longitude: nil)
-
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
@@ -34,8 +33,11 @@ class ProductsController < ApplicationController
 
   def show
     @rent = Rent.new
-    @user = @product.user
-
+    @users = @product.user
+    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
   end
 
   def new
