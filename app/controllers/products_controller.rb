@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
     @end_date = product.nil? ? nil : product[:end_end]
     @products = product.nil? ? Product.all.where("hidden = ? AND user_id > ?", false, 1) : Product.all.where("name ILIKE ? AND hidden = ? AND user_id > ?", "%#{@product_wanted}%", false, 1)
 
+    # geocoding
     @users = User.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
@@ -32,6 +33,9 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @rent = Rent.new
+    @user = @product.user
+
   end
 
   def new
