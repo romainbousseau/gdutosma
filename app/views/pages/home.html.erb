@@ -2,13 +2,19 @@
   <div class="banner-content">
     <h1>Gdutosma</h1>
     <p>Rent professionnal equipments from people near you</p>
-      <%= simple_form_for :product do |f| %>
+      <%= simple_form_for :product, :method => 'get', url: :products do |f| %>
 
-        <%= f.input_field :search, :placeholder => "Search products",
-        :class => "input-lg", :id => "inputcolor" %>
+        <%= f.input_field :location, :placeholder => "Where",
+        :class => "input-lg", :id => "inputcolor", required: true %>
 
-        <%= f.input_field :search, :placeholder => "place",
-        :class => "input-lg", :id => "inputcolor" %>
+        <%= f.input_field :product_wanted, :placeholder => "What",
+        :class => "input-lg", :id => "inputcolor", required: true %>
+
+        <%= f.input_field :start_date, :placeholder => "Start Date",
+        :class => "input-lg datepicker", :id => "inputcolor", required: true %>
+
+        <%= f.input_field :end_date, :placeholder => "End Date",
+        :class => "input-lg datepicker", :id => "inputcolor", required: true %>
 
         <%= f.submit "Find !", :class => "btn btn-mine btn-lg" %>
       <% end %>
@@ -33,8 +39,9 @@
       <% end %>
     </div>
 
-      <div class="row" id="style">
-        <div class="col-md-3">
+    <div class="row">
+      <div class="col-md-3">
+
         <div class="icones" id="icone1" style="background-image: url(<%= asset_url('photo.png')%>);"></div>
         <h3 class="h3style">Rentabilisez votre matériel et économisez en louant</h3>
       </div>
@@ -53,9 +60,6 @@
         <div class="icones" id="icone4" style="background-image: url(<%= asset_url('phone.png')%>);"></div>
         <h3 class="h3style">Recevez les demandes de nos membres certifiés</h3>
       </div>
-      </div>
 
-
-  </div>
+    </div>
 </div>
-
