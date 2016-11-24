@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [ :show, :destroy]
 
   def index
+    raise
     @products = Product.all.where(hidden: false)
   end
 
