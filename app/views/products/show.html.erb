@@ -14,27 +14,28 @@
         <p> <%= @product.description %> </p>
         <p> <%= @product.price %> </p>
         <p> <%= @product.category %> </p>
-
-        <div class="container">
-          <%= link_to products_path do  %>
-            <button type="button" class="btn btn-primary btn-lg">Home </button>
-          <% end %>
-
-          <%= link_to new_product_rent_path(@product) do  %>
-            <button type="button" class="btn btn-primary btn-lg">Get it </button>
-          <% end %>
-
-          <% if @product.user == current_user %>
-            <%= link_to "Delete", product_undisplay_path(@product), :class => "btn btn-danger btn-lg",
-            :controller => :products, :action => :undisplay,
-             data: { confirm: "Are you sure?" }
-             %>
-          <% end %>
-        </div>
       </div>
     </div>
     <div class="col-md-4">
       <%= render 'rents/new' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+      <%= link_to products_path do  %>
+        <button type="button" class="btn btn-primary btn-lg">Home </button>
+      <% end %>
+
+      <%= link_to new_product_rent_path(@product) do  %>
+        <button type="button" class="btn btn-primary btn-lg">Get it </button>
+      <% end %>
+
+      <% if @product.user == current_user %>
+        <%= link_to "Delete", product_undisplay_path(@product), :class => "btn btn-danger btn-lg",
+        :controller => :products, :action => :undisplay,
+         data: { confirm: "Are you sure?" }
+         %>
+      <% end %>
     </div>
   </div>
 
