@@ -4,10 +4,16 @@
     <p>Rent professionnal equipments from people near you</p>
       <%= simple_form_for :product, :method => 'get', url: :products do |f| %>
 
-        <%= f.input_field :start_date, :placeholder => "Search products",
+        <%= f.input_field :location, :placeholder => "Where",
+        :class => "input-lg", :id => "inputcolor" %>
+
+        <%= f.input_field :product_wanted, :placeholder => "What",
+        :class => "input-lg", :id => "inputcolor" %>
+
+        <%= f.input_field :start_date, :placeholder => "Start Date",
         :class => "input-lg datepicker", :id => "inputcolor" %>
 
-        <%= f.input_field :end_date, :placeholder => "place",
+        <%= f.input_field :end_date, :placeholder => "End Date",
         :class => "input-lg datepicker", :id => "inputcolor" %>
 
         <%= f.submit "Find !", :class => "btn btn-mine btn-lg" %>

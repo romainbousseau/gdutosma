@@ -3,8 +3,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [ :show, :destroy]
 
   def index
-    raise
     @products = Product.all.where(hidden: false)
+    @product_wanted = params[:product_wanted]
+    @location = params[:location]
+    @start_date = params[:start_date]
+    @end_date = params[:end_end]
   end
 
   def show
