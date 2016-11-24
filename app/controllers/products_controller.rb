@@ -4,20 +4,24 @@ class ProductsController < ApplicationController
 
   def index
     product = params[:product]
+    # On vérifie si les params sont vides (en gros c'est si on a appuyé sur "rent an item <=> pas de recherche")
     # On verifie si tous les inputs sont fournis et non vide
     # si c vide -> flash + redirect_to
-    product.each_value do |value|
-      if value.empty? || value.nil? || value.blank?
-        flash[:alert] = "You did not fill all the fields bro"
-        redirect_to root_path
-        break
+    unless product.nil?
+      product.each_value do |value|
+        if value.empty? || value.nil? || value.blank?
+          flash[:alert] = "You did not fill all the fields bro"
+          redirect_to root_path
+          break
+        end
       end
     end
-    @product_wanted = params[:product][:product_wanted]
-    @location = params[:product][:location]
-    @start_date = params[:product][:start_date]
-    @end_date = params[:product][:end_end]
-    @products = Product.all.where("name ILIKE ? AND hidden = ?", "%#{@product_wanted}%", false)
+    # pour éviter les erreurs on affecte nil a la variable si le user n'a pas effectuer de recherche pour pas que ca pète, a voir si on fait pas ca autrement
+    @product_wanted = product.nil? ? nil : product[:product_wanted]
+    @location = product.nil? ? nil : product[:location]
+    @start_date = product.nil? ? nil : product[:start_date]
+    @end_date = product.nil? ? nil : product[:end_end]
+    @products = product.nil? ? Product.all.where(hidden: false) : Product.all.where("name ILIKE ? AND hidden = ?", "%#{@product_wanted}%", false)
 
     @users = User.where.not(latitude: nil, longitude: nil)
 
