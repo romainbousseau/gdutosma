@@ -1,14 +1,19 @@
 <div class="container">
   <div class="row">
+      <% @product.photos.each do |photo| %>
+        <div class="photo col-xs-12 col-md-4">
+          <%= cl_image_tag photo.path, width: 200, crop: :fill %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-8">
       <div class="product">
         <h2> <%= @product.name %> </h2>
         <p> <%= @product.description %> </p>
         <p> <%= @product.price %> </p>
         <p> <%= @product.category %> </p>
-        <% @product.photos.each do |photo| %>
-          <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-        <% end %>
 
         <div class="container">
           <%= link_to products_path do  %>
@@ -33,18 +38,18 @@
     </div>
   </div>
 
-  <div class="row">
+<!--   <div class="row">
     <div class="col-md-6">
       <div class="availability">
-        <% if @product.user == current_user %>
+        <%# if @product.user == current_user %>
           <h4> Change product availability </h4>
           <% %>
-          <%= link_to @product.available ? "Set unavailable" : "Set available", product_unavailable_path(@product), :class => "btn btn-warning btn-lg",
+          <%#= link_to @product.available ? "Set unavailable" : "Set available", product_unavailable_path(@product), :class => "btn btn-warning btn-lg",
           :controller => :products, :action => :unavailable,
            data: { confirm: "Are you sure?" }
            %>
-        <% end %>
+        <%# end %>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
