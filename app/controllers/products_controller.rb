@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     @product_wanted = product.nil? ? nil : product[:product_wanted]
     @location = product.nil? ? nil : product[:location]
     @start_date = product.nil? ? nil : product[:start_date]
-    @end_date = product.nil? ? nil : product[:end_end]
+    @end_date = product.nil? ? nil : product[:end_date]
     @products = product.nil? ? Product.all.where("hidden = ? AND user_id > ?", false, 1) : Product.all.where("name ILIKE ? AND hidden = ? AND user_id > ?", "%#{@product_wanted}%", false, 1)
 
     # geocoding
