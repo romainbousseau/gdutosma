@@ -12,6 +12,27 @@
   background-color: #FD717F;
 }
 
-#btn-nav {
-  margin: 0 10px;
+#btn-nav{
+text-align: center;
+font-size: 12px;
+// font-family: 'montserrat';
+margin: 0 10px;
+padding: 10px 20px;
+background-color: #ff7b7f;
+border: 1px solid #ff7b7f;
+color: #FFF;
+overflow: hidden;
+transition: all 0.5s;
+vertical-align: top;
+border-radius: 4px;
+}
+
+
+#btn-nav:hover, #btn-nav:active{
+
+text-decoration: none;
+color: #FF4776;
+border-color: #FF4776;
+background: #FFF;
+
 }
