@@ -7,6 +7,10 @@ module ProductsHelper
       asset_url("sound.png")
     elsif product.category == "Lights"
       asset_url("lights.png")
+    elsif product.category == "Accessories"
+      asset_url("accessories.png")
+    else
+      asset_url("camera.jpg")
     end
   end
 end
