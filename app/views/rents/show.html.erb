@@ -25,3 +25,19 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <br>
+      <% if @rent.status == "pending" %>
+        <%= link_to "Validate", validate_rent_path(@rent), class: "btn btn-success btn-lg", method: :post %>
+        <%= link_to "Decline", decline_rent_path(@rent), class: "btn btn-danger btn-lg", method: :post %>
+      <% else %>
+        <%= link_to "Done", done_rent_path(@rent), class: "btn btn-warning btn-lg", method: :post %>
+      <% end %>
+      <br>
+      <h3>Status: <%= @rent.status.capitalize %></h3>
+    </div>
+  </div>
+</div> -->
