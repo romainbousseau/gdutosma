@@ -1,11 +1,11 @@
 
 $(document).ready(function() {
-  var flat_address = $('#flat_address').get(0);
+  var user_address = $('#user_address').get(0);
 
-  if (flat_address) {
-    var autocomplete = new google.maps.places.Autocomplete(flat_address, { types: ['geocode'] });
+  if (user_address) {
+    var autocomplete = new google.maps.places.Autocomplete(user_address, { types: ['geocode'] });
     google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-    google.maps.event.addDomListener(flat_address, 'keydown', function(e) {
+    google.maps.event.addDomListener(user_address, 'keydown', function(e) {
       if (e.keyCode == 13) {
         e.preventDefault(); // Do not submit the form on Enter.
       }
@@ -17,11 +17,11 @@ function onPlaceChanged() {
   var place = this.getPlace();
   var components = getAddressComponents(place);
 
-  $('#flat_address').trigger('blur').val(components.address);
-  $('#flat_zip_code').val(components.zip_code);
-  $('#flat_city').val(components.city);
+  $('#user_address').trigger('blur').val(components.address);
+  $('#user_zip_code').val(components.zip_code);
+  $('#user_city').val(components.city);
   if (components.country_code) {
-    $('#flat_country').val(components.country_code);
+    $('#user_country').val(components.country_code);
   }
 }
 
