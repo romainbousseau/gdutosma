@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20161124110336) do
     t.boolean  "available",   default: true
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.boolean  "hidden",      default: false
     t.integer  "user_id"
+    t.boolean  "hidden",      default: false
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
