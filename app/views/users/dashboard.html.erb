@@ -22,8 +22,6 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
     <div class="tab-content" id="products">
       <% @products.each do |p| %>
           <div class="item">
@@ -40,12 +38,9 @@
                  %>
             </div>
           </div>
-        </div>
       <% end %>
   </div>
-</div>
 
-<div class="container">
     <div class="tab-content hidden" id="products_rents">
     <% if @rents_owner.length > 0 %>
       <% @rents_owner.each do |rent| %>
@@ -72,10 +67,7 @@
         <p> You don't have any rents in your history</p>
       <% end %>
     </div>
-  </div>
 
-<div class="container">
-  <div class="row">
     <div class="tab-content hidden" id="rents">
       <% @rents_client.each do |r| %>
           <div class="item">
@@ -87,7 +79,6 @@
               <p>status: <%= r.status %></p>
             </div>
           </div>
-        </div>
       <% end %>
     </div>
-</div>
+
