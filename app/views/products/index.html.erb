@@ -5,7 +5,7 @@
   </div>
   <br/>
   <div class="search-bar">
-    <%= simple_form_for :product do |f| %>
+    <%= simple_form_for :product, :method => 'get', url: :products do |f| %>
       <%= f.input_field :product_wanted, :placeholder => "Search products",
           :class => "input-lg", :id => "inputcolor", value: @product_wanted  %>
 
