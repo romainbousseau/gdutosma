@@ -1,9 +1,9 @@
 <div class="container">
-      <h2>New Rent</h2>
-      <%= simple_form_for([@product, @rent]) do |f| %>
-        <%= f.error_notification %>
-        <%= f.input :start_date, as: :string, input_html: {value: start_date, placeholder: "", class: "input-lg datepicker"} %>
-        <%= f.input :end_date, as: :string, input_html: {value: end_date, placeholder: "", class: "input-lg datepicker"} %>
-        <%= f.button :submit, class: "btn btn-primary"  %>
-      <% end %>
+    <h2>New Rent</h2>
+    <%= simple_form_for([@product, @rent]) do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :start_date, as: :string, input_html: {value: start_date, placeholder: "", class: "input-lg datepicker"} %>
+      <%= f.input :end_date, as: :string, input_html: {value: end_date, placeholder: "", class: "input-lg datepicker"} %>
+      <%= f.button :submit, class: "btn btn-primary"  %>
+    <% end %>
 </div>
