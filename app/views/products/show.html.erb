@@ -14,7 +14,7 @@
       <% end %>
     </div>
     <div class="col-md-4">
-      <%= render 'rents/new', start_date: @start_date, end_date: @end_date  %>
+      <%= render 'rents/new', rent: @rent, start_date: @start_date, end_date: @end_date  %>
     </div>
   </div>
   <div class="row">
@@ -50,6 +50,41 @@
       <% end %>
     </div>
   </div>
+  <h2>
+  <%= pluralize @product.reviews.size, "review" %>
+</h2>
+<div class="container">
+  <div class="row">
+      <% @product.reviews.each do |review| %>
+      <div class="review">
+        <div class="review-top">
+          <% if review.user.photo? %>
+            <%= cl_image_tag review.user.photo.path, width: 120, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% else %>
+            <%= image_tag "icon_profile.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
+          <p> <%= review.user.first_name %></p>
+          <p> <%= review.rating %> / 5 </p>
+        </div>
+        <div class="review-content">
+          <p> <%= review.content %> </p>
+        </div>
+      </div>
+      <hr>
+      <% end %>
+    </div>
+  </div>
+
+  <% unless !user_rented_products.include?(@product) %>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <%= render 'reviews/form', product: @product, review: @review %>
+        </div>
+      </div>
+
+  <% end %>
+
   <%= link_to products_path do  %>
         <button type="button" class="btn btn-primary btn-lg">Back </button>
       <% end %>
@@ -61,18 +96,5 @@
          %>
       <% end %>
 
-<!--   <div class="row">
-    <div class="col-md-6">
-      <div class="availability">
-        <%# if @product.user == current_user %>
-          <h4> Change product availability </h4>
-          <% %>
-          <%#= link_to @product.available ? "Set unavailable" : "Set available", product_unavailable_path(@product), :class => "btn btn-warning btn-lg",
-          :controller => :products, :action => :unavailable,
-           data: { confirm: "Are you sure?" }
-           %>
-        <%# end %>
-      </div>
-    </div>
-  </div> -->
+
 </div>
