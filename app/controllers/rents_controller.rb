@@ -1,5 +1,6 @@
 class RentsController < ApplicationController
   before_action :find_product, only: [:show, :new, :create ]
+  after_validate :send_recap_email
   def show
     @owner = User.find(@product.user)
     @rent = Rent.find(params[:id])
@@ -53,4 +54,10 @@ class RentsController < ApplicationController
   def rent_params
     params.require(:rent).permit(:start_date, :end_date)
   end
+
+  def send_recap_email
+    UserMailer.recap(self).deliver_now
+  end
+
+
 end
