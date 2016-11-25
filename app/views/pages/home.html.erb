@@ -4,10 +4,10 @@
     <p>Rent professionnal equipments from people near you</p>
       <%= simple_form_for :product, :method => 'get', url: :products do |f| %>
 
-        <%= f.input_field :location, :placeholder => "Where",
+        <%= f.input_field :product_wanted, :placeholder => "What",
         :class => "input-lg", :id => "inputcolor", required: true %>
 
-        <%= f.input_field :product_wanted, :placeholder => "What",
+        <%= f.input_field :location, :placeholder => "Where",
         :class => "input-lg", :id => "inputcolor", required: true %>
 
         <%= f.input_field :start_date, :placeholder => "Start Date",
