@@ -1,0 +1,68 @@
+.item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+
+/* Body design */
+.item-body {
+  margin: 0 50px;
+  flex: 1 1 auto;
+}
+.item-body h3 {
+  font-weight: bold;
+  font-size: 23px;
+  margin-top: 0;
+}
+.item-body p {
+  font-weight: lighter;
+  color: #999999;
+  margin-bottom: 0;
+}
+
+/* item image */
+.item-image {
+  border-radius: 10px;
+  margin-right: 20px;
+  width: 175px;
+}
+
+/* Controls design */
+.item-controls {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0px;
+}
+.item-controls a {
+  padding: 0 20px;
+  font-size: 17px;
+  color: #E6E6E6;
+}
+.item-controls a:hover {
+  color: #D3473C !important
+}
+.item-controls-hidden a {
+  color: transparent;
+  font-size: 15px;
+  transition: all 0.15s ease;
+  border-color: transparent;
+}
+
+/* Hover effects */
+.item:hover {
+  background: #f7f7fa;
+  cursor: pointer;
+}
+.item-upvote:hover, .item-upvote.item-upvote-upvoted {
+  color: #5898f1;
+  cursor: pointer;
+}
+.item-upvote-upvoted .item-arrow {
+  border-bottom-color: #5898f1;
+}
+// .item:hover .item-upvote { transform: scale(1.2) }
+.item:hover .item-controls-hidden a { color: #E6E6E6 }
+.item-upvote:hover .item-arrow { border-bottom: 9px solid #5898f1 }

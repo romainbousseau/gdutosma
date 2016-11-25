@@ -26,7 +26,7 @@ class RentsController < ApplicationController
     @rent = current_user.rents.build(rent_params)
     @rent.product = @product
     if @rent.save
-      redirect_to root_path
+      redirect_to user_dashboard_path(current_user)
     else
       render :new
     end
