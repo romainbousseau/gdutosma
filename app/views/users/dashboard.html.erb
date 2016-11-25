@@ -51,7 +51,7 @@
               <p><%= rent.user.first_name %> <%= rent.user.last_name %></p>
               <p>from: <%= rent.start_date %> to: <%= rent.end_date %></p>
             </div>
-            <div>
+            <div class="text-center">
               <% if rent.status == "pending" %>
                 <%= link_to "Validate", validate_rent_path(rent), class: "btn btn-success", method: :post %>
                 <%= link_to "Decline", decline_rent_path(rent), class: "btn btn-danger", method: :post %>
