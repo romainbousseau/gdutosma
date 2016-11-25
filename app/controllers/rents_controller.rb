@@ -1,6 +1,6 @@
 class RentsController < ApplicationController
   before_action :find_product, only: [:show, :new, :create ]
-  after_filter :send_recap_email, only: [ :validate ]
+  # after_action :send_recap_email, only: [ :validate ]
   def show
     @owner = User.find(@product.user)
     @rent = Rent.find(params[:id])
