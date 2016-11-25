@@ -32,6 +32,9 @@ class ProductsController < ApplicationController
   end
 
   def show
+    product = params[:product]
+    @start_date = product.nil? ? nil : product[:start_date]
+    @end_date = product.nil? ? nil : product[:end_date]
     @rent = Rent.new
     @users = @product.user
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|

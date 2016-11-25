@@ -17,7 +17,7 @@
 
       <%= f.input_field :end_date, :placeholder => "End Date",
       :class => "input-lg datepicker", :id => "inputcolor", value: @end_date %>
-      
+
       <%= f.submit "Find !", :class => "btn btn-mine btn-lg" %>
     <% end %>
   </div>
@@ -37,9 +37,14 @@
              <p> <%= truncate(product.description, length: 25, separator: ' ' ) %> </p>
              <p> <%= product.price %>$/day</p>
              <p> <%= product.user.first_name %> <%= product.user.last_name %></p>
-             <%= link_to product_path(product) do %>
+             <%= simple_form_for product, :method => 'get', url: product_path(product) do |f| %>
+              <%= f.hidden_field :start_date, value: @start_date %>
+              <%= f.hidden_field :end_date, value: @end_date %>
+              <%= f.submit 'Show',:class => "btn btn-primary show_button"  %>
+              <% end %>
+             <!-- <%= link_to product_path(product) do %>
                <button type="button" class="btn btn-primary show_button ">Show</button>
-             <% end %>
+             <% end %> -->
            </div>
          </div>
        </div>
