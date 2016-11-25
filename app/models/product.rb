@@ -6,5 +6,6 @@ class Product < ApplicationRecord
   belongs_to :user
   has_many :rents
   has_attachments :photos, maximum: 3
+  has_many :reviews, dependent: :nullify
   CATEGORY = ["Video/Photo", "Sound", "Lights", "Accessories"]
 end
