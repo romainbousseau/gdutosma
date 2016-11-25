@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <h1>Rent of <%= @product.name %></h1>
+    <div class="product-show col-xs-12 col-sm-8">
+      <h1 style="color: #FF7E7E;">Rent of <%= @product.name %></h1>
+      <%= image_tag product_card_background(@rent.product), style: "width: 100px;" %>
       <h3>Date</h3>
       <p>from <%= @rent.start_date %></p>
       <p>to <%= @rent.end_date %></p>
@@ -12,15 +13,31 @@
       <p><%= @product.price %>$ for <%= nb_days %> days</p>
       <p><strong>Total</strong> <%= @product.price * nb_days %>$</p>
     </div>
-    <div class="col-xs-12 col-sm-4">
+    <div class="text-center col-xs-12 col-sm-4">
       <h1>People</h1>
       <h3>Owner</h3>
-      <p><%= @owner.first_name %> <%= @owner.last_name %></p>
+      <% if @owner.photo? %>
+            <%= cl_image_tag @owner.photo.path, width: 80, crop: :fill, style: "margin-bottom: 10px;"%>
+          <% else %>
+            <%= image_tag "icon_profile.png", width: 80, style: "margin-bottom: 10px;" %>
+          <% end %>
+      <p><strong><%= @owner.first_name %> <%= @owner.last_name %></strong></p>
       <p><%= @owner.address %></p>
+      <p><%= @owner.zip_code %></p>
+      <p><%= @owner.city %></p>
+      <p><%= @owner.country %></p>
       <p><%= mail_to @owner.email, "Send Mail" %></p>
       <h3>Customer</h3>
-      <p><%= @customer.first_name %> <%= @customer.last_name %></p>
+      <% if @customer.photo? %>
+        <%= cl_image_tag @customer.photo.path, width: 80, crop: :fill, style: "margin-bottom: 10px;"%>
+      <% else %>
+        <%= image_tag "icon_profile.png", width: 80, style: "margin-bottom: 10px;" %>
+      <% end %>
+      <p><strong><%= @customer.first_name %> <%= @customer.last_name %></strong></p>
       <p><%= @customer.address %></p>
+      <p><%= @customer.zip_code %></p>
+      <p><%= @customer.city %></p>
+      <p><%= @customer.country %></p>
       <p><%= mail_to @customer.email, "Send Mail" %></p>
     </div>
   </div>

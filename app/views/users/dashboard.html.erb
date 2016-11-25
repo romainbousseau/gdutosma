@@ -47,7 +47,7 @@
           <div class="item">
           <%= image_tag product_card_background(rent.product), style: "width: 100px;" %>
             <div class='item-body'>
-              <p><%= rent.product.name %></p>
+              <p><%= link_to rent.product.name, product_rent_path(rent.product, rent) %></p>
               <p><%= rent.user.first_name %> <%= rent.user.last_name %></p>
               <p>from: <%= rent.start_date %> to: <%= rent.end_date %></p>
             </div>
@@ -73,7 +73,7 @@
           <div class="item">
             <%= image_tag product_card_background(r.product), style: "width: 100px;" %>
             <div class='item-body'>
-              <p><%= r.product.name %></p>
+              <p><%= link_to r.product.name, product_rent_path(r.product, r) %></p>
               <p><%= r.product.user.first_name %> <%= r.product.user.last_name %></p>
               <p>from: <%= r.start_date %> to: <%= r.end_date %></p>
               <p>status: <%= r.status %></p>
