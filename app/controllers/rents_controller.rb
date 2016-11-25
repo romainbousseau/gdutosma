@@ -35,23 +35,23 @@ class RentsController < ApplicationController
   end
 
   def validate
-    @product = Product.find(params[:id])
     @rent = Rent.find(params[:id])
+    @product = @rent.product
     @rent.update(status: "validate")
     @product.update(available: false, hidden: true)
     redirect_to user_dashboard_path(current_user)
   end
 
   def decline
-    @product = Product.find(params[:id])
     @rent = Rent.find(params[:id])
+    @product = @rent.product
     @rent.update(status: "decline")
     redirect_to user_dashboard_path(current_user)
   end
 
   def done
-    @product = Product.find(params[:id])
     @rent = Rent.find(params[:id])
+    @product = @rent.product
     @rent.update(status: "done")
     @product.update(available: true, hidden: false)
     redirect_to user_dashboard_path(current_user)
