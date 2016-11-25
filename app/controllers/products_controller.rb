@@ -45,6 +45,7 @@ class ProductsController < ApplicationController
 
   def new
     # We wanted to the user to create a rent if his profile isn't complete, but there are some parameters that could be nil no matter what (ex :FB)
+
     parameters_to_avoid = ["reset_password_token", "reset_password_sent_at", "remember_created_at", "provider", "uid", "facebook_picture_url", "token", "token_expiry"]
     current_user.attributes.each do |key, value|
       unless parameters_to_avoid.include?(key)
