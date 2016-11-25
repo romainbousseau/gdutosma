@@ -30,10 +30,12 @@
             <%= image_tag product_card_background(p), style: "width: 100px;" %>
             <div class="item-body">
               <p><%= link_to p.name, product_path(p) %></p>
+              <p><%= p.category %></p>
+              <p><%= p.price %>$/day</p>
             </div>
             <div class="availability">
                 <p> Change product availability </p>
-                <%= link_to p.available ? "Set unavailable" : "Set available", product_change_availability_path(p), :class => "btn btn-warning btn-lg",
+                <%= link_to p.available ? "Set unavailable" : "Set available", product_change_availability_path(p), :class => "btn btn-warning",
                  data: { confirm: "Are you sure?" }, method: :post
                  %>
             </div>
@@ -54,14 +56,16 @@
               <p><%= rent.user.first_name %> <%= rent.user.last_name %></p>
               <p>from: <%= rent.start_date %> to: <%= rent.end_date %></p>
             </div>
-            <% if rent.status == "pending" %>
-              <%= link_to "Validate", validate_rent_path(rent), class: "btn btn-success btn-lg", method: :post %>
-              <%= link_to "Decline", decline_rent_path(rent), class: "btn btn-danger btn-lg", method: :post %>
-            <% else %>
-              <%= link_to "Done", done_rent_path(rent), class: "btn btn-warning btn-lg", method: :post %>
-            <% end %>
-            <br>
-            <p>Status: <%= rent.status.capitalize %></p>
+            <div>
+              <% if rent.status == "pending" %>
+                <%= link_to "Validate", validate_rent_path(rent), class: "btn btn-success", method: :post %>
+                <%= link_to "Decline", decline_rent_path(rent), class: "btn btn-danger", method: :post %>
+              <% else %>
+                <%= link_to "Done", done_rent_path(rent), class: "btn btn-warning", method: :post %>
+              <% end %>
+              <br>
+              <p>Status: <%= rent.status.capitalize %></p>
+            </div>
           </div>
       <% end %>
       <% else %>
