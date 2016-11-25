@@ -1,33 +1,41 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <% @product.photos.each do |photo| %>
+      <% if @product.photos? %>
+        <% @product.photos.each do |photo| %>
+          <div class="photo col-xs-12 col-md-4">
+            <%= cl_image_tag photo.path, width: 200, crop: :fill %>
+          </div>
+        <% end %>
+      <% else %>
         <div class="photo col-xs-12 col-md-4">
-          <%= cl_image_tag photo.path, width: 200, crop: :fill %>
+          <%= image_tag product_card_background(@product), style: "width: 500px;" %>
         </div>
       <% end %>
     </div>
     <div class="col-md-4">
-      <%= render 'rents/new' %>
+      <%= render 'rents/new', start_date: @start_date, end_date: @end_date  %>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12 col-md-8">
-      <div class="product">
-        <h2> <%= @product.name %> </h2>
+      <div class="product-show">
+        <h2 style="color: #FF7B7F;"><strong><%= @product.name %></strong> </h2>
         <p> <%= @product.description %> </p>
         <p> <%= @product.price %>$/day </p>
         <p> <%= @product.category %> </p>
         <p> <%= @product.user.first_name %> <%= @product.user.last_name %></p>
       </div>
     </div>
+
     <div class="col-md-4">
       <div id="map" style="width: 100%; height: 200px; margin-top: 50px;"></div>
       <% content_for(:after_js) do %>
         <%= javascript_tag do %>
           $(document).ready(function() {
+            var styles = [{"elementType":"labels","stylers":[{"visibility":"off"},{"color":"#f49f53"}]},{"featureType":"landscape","stylers":[{"color":"#f9ddc5"},{"lightness":-7}]},{"featureType":"road","stylers":[{"color":"#813033"},{"lightness":43}]},{"featureType":"poi.business","stylers":[{"color":"#645c20"},{"lightness":38}]},{"featureType":"water","stylers":[{"color":"#1994bf"},{"saturation":-69},{"gamma":0.99},{"lightness":43}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"#f19f53"},{"weight":1.3},{"visibility":"on"},{"lightness":16}]},{"featureType":"poi.business"},{"featureType":"poi.park","stylers":[{"color":"#645c20"},{"lightness":39}]},{"featureType":"poi.school","stylers":[{"color":"#a95521"},{"lightness":35}]},{},{"featureType":"poi.medical","elementType":"geometry.fill","stylers":[{"color":"#813033"},{"lightness":38},{"visibility":"off"}]},{},{},{},{},{},{},{},{},{},{},{},{"elementType":"labels"},{"featureType":"poi.sports_complex","stylers":[{"color":"#9e5916"},{"lightness":32}]},{},{"featureType":"poi.government","stylers":[{"color":"#9e5916"},{"lightness":46}]},{"featureType":"transit.station","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","stylers":[{"color":"#813033"},{"lightness":22}]},{"featureType":"transit","stylers":[{"lightness":38}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"color":"#f19f53"},{"lightness":-10}]},{},{},{}];
             var handler = Gmaps.build('Google');
-            handler.buildMap({ internal: { id: 'map' } }, function() {
+            handler.buildMap({ internal: { id: 'map' }, provider: { styles: styles } }, function() {
               markers = handler.addMarkers(<%= raw @hash.to_json %>);
               handler.bounds.extendWith(markers);
               handler.fitMapToBounds();
@@ -43,7 +51,7 @@
     </div>
   </div>
   <%= link_to products_path do  %>
-        <button type="button" class="btn btn-primary btn-lg">Home </button>
+        <button type="button" class="btn btn-primary btn-lg">Back </button>
       <% end %>
 
       <% if @product.user == current_user %>

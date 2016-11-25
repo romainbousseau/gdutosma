@@ -20,12 +20,11 @@ class ProductsController < ApplicationController
     @product_wanted = product.nil? ? nil : product[:product_wanted]
     @location = product.nil? ? nil : product[:location]
     @start_date = product.nil? ? nil : product[:start_date]
-    @end_date = product.nil? ? nil : product[:end_end]
+    @end_date = product.nil? ? nil : product[:end_date]
     @products = product.nil? ? Product.all.where("hidden = ? AND user_id > ?", false, 1) : Product.all.where("name ILIKE ? AND hidden = ? AND user_id > ?", "%#{@product_wanted}%", false, 1)
 
     # geocoding
     @users = User.where.not(latitude: nil, longitude: nil)
-
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
@@ -33,13 +32,31 @@ class ProductsController < ApplicationController
   end
 
   def show
+    product = params[:product]
+    @start_date = product.nil? ? nil : product[:start_date]
+    @end_date = product.nil? ? nil : product[:end_date]
     @rent = Rent.new
-    @user = @product.user
-
+    @users = @product.user
+    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
   end
 
   def new
-    @product = current_user.products.build
+    # We wanted to the user to create a rent if his profile isn't complete, but there are some parameters that could be nil no matter what (ex :FB)
+    parameters_to_avoid = ["reset_password_token", "reset_password_sent_at", "remember_created_at", "provider", "uid", "facebook_picture_url", "token", "token_expiry"]
+    current_user.attributes.each do |key, value|
+      unless parameters_to_avoid.include?(key)
+        if value.nil?
+          flash[:alert] = "You need to complete your profile before creating an announce"
+          redirect_to root_path
+          break
+        else
+          @product = current_user.products.build
+        end
+      end
+    end
   end
 
   def create

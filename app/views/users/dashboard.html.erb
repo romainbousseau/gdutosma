@@ -1,14 +1,25 @@
-<h1 class="text-center">Welcome to your Dashboard <%= @user.first_name %> <%= @user.last_name %></h1>
-<div class="tabs">
-  <a class="tab active" data-target="#products">
-    <p>My products</p>
-  </a>
-  <a class="tab" data-target="#rents">
-    <p>My rents</p>
-  </a>
-  <a class="tab" data-target="#products_rents">
-    <p>My products rents</p>
-  </a>
+<div class="profile-header-wrapper">
+  <div class="text-center">
+    <div class="profile-header-infos">
+      <% if current_user.photo? %>
+            <%= cl_image_tag current_user.photo.path, width: 120, crop: :fill%>
+          <% else %>
+            <%= image_tag "icon_profile.png", width: 120 %>
+          <% end %>
+      <h1>Welcome to your Dashboard <%= @user.first_name %> <%= @user.last_name %></h1>
+    </div>
+    <div class="tabs">
+      <a class="tab active" data-target="#products">
+        <p>My products</p>
+      </a>
+      <a class="tab" data-target="#rents">
+        <p>My rents</p>
+      </a>
+      <a class="tab" data-target="#products_rents">
+        <p>My products rents</p>
+      </a>
+    </div>
+  </div>
 </div>
 
 <div class="container">
