@@ -77,7 +77,7 @@
       <% @rents_client.each do |r| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card">
-            <p><%= r.user.first_name %> <%= r.user.last_name %></p>
+            <p><%= r.product.user.first_name %> <%= r.product.user.last_name %></p>
             <p><%= r.start_date %></p>
             <p><%= r.end_date %></p>
           </div>
