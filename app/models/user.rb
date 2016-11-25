@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :rents
   has_many :products
+  has_many :reviews
   has_attachment :photo
   after_create :send_welcome_email
   geocoded_by :address
